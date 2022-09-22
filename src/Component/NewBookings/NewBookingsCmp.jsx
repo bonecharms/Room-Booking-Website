@@ -11,10 +11,20 @@ const NewBookingsCmp = () => {
   const [chkout, setChkout] = useState('')
   const [adult, setAdult] = useState('')
   const [Child, setChild] = useState('')
+  const [Available, setAvailable] = useState(false)
+  const [Book, setBook] = useState(false)
   const sentData=(e)=>{
     e.preventDefault()
     console.log(guest,first,chkin,chkout,adult,Child);
   }
+  function Availablefn() {
+    setAvailable(!Available)
+    console.log(Available);
+    setBook(false)
+
+    
+  }
+
 
   return (
     <div className='bookingbox'>
@@ -27,8 +37,21 @@ const NewBookingsCmp = () => {
             <InputComponent type='Number' text='Number of Adult' setState={setAdult}/>
             <InputComponent type='Number' text='Number of Children' setState={setChild}/>
             <div className='getbttn'>
-            <Button text='Get Available Room' />
+            <Button className='bttn' text='Get Available Room' func={Availablefn} />
+              { Available && 
+            <div>
+            <Button className='finalbookbtn' text='Book room'  func={()=>{setBook(!Book)}}/>
+            <Button className='Cancelbttn' text='Cancel' /> </div>}
+           
             </div>
+            {Book && <div className='bookbtn'>
+            <Button className='finalbtn' text='Check-In'  />
+            <Button className='finalbtn' text='Check-Out' />
+            <Button className='finalbtn' text='Cancel' />
+            
+
+            </div>}
+            
             </form>
 
         

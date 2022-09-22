@@ -21,7 +21,7 @@ const Datatable = ({data}) => {
    
         
       <div className={addroom?"Popuproom":""}  >
-      {addroom && <RoomPopUp setAddroom={setAddroom}/>}
+      {addroom && <RoomPopUp data={data} isEditing={true} setAddroom={setAddroom}/>}
       </div>
     </div>
 
